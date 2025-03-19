@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets"
+import '@styles/fonts/TwCenMT.scss'
+import logo from '@assets/logo.png'
+---
+
+<header>
+  <Image src={logo} alt="Timberworks logo" width={100} height={100} layout="fixed" />
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Services</a>
+    <a href="#">Get in Touch</a>
+  </nav>
+</header>
+
+<style lang="scss">
+  header {
+    height: 100px;
+    border: 1px solid #000;
+  }
+
+  nav {
+    font-family: 'Tw Cen MT', 'Helvetica', sans-serif;
+  }
+</style>
