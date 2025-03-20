@@ -1,26 +1,80 @@
 ---
-import { Image } from "astro:assets"
-import '@styles/fonts/TwCenMT.scss'
-import logo from '@assets/logo.png'
+import { Image } from "astro:assets";
+import logo from "@/assets/logo.png";
+
+const navbarHeight = 80;
+const logoOffset = 30;
+const logoSize = navbarHeight + logoOffset * 2;
 ---
 
 <header>
-  <Image src={logo} alt="Timberworks logo" width={100} height={100} layout="fixed" />
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Services</a>
-    <a href="#">Get in Touch</a>
-  </nav>
+	<div class="container">
+		<a href="/" id="logo">
+			<Image src={logo} alt="Timberworks logo" width={200} height={200} />
+		</a>
+
+		<div id="brand">Timberworks Construction</div>
+
+		<nav>
+			<a href="#">Home</a>
+			<a href="#">Products</a>
+			<a href="#">Services</a>
+			<a href="#">Get in Touch</a>
+		</nav>
+	</div>
 </header>
 
 <style lang="scss">
-  header {
-    height: 100px;
-    border: 1px solid #000;
-  }
+	@use "@/styles/variables";
 
-  nav {
-    font-family: 'Tw Cen MT', 'Helvetica', sans-serif;
-  }
+	:root {
+		--navbarHeight: 4rem;
+		--logoOffset: 1.5rem;
+		--logoSize: calc(var(--navbarHeight) + var(--logoOffset) * 2);
+	}
+
+	header {
+		padding: calc(var(--logoOffset) + 1rem) 2rem;
+		color: variables.$color-primary;
+	}
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		height: var(--navbarHeight);
+		padding: 0 1rem;
+		background-color: variables.$color-secondary;
+		border-radius: 0.5rem;
+	}
+
+	#logo {
+		width: var(--logoSize);
+		height: var(--logoSize);
+		background-color: variables.$color-secondary;
+		border-radius: 50%;
+		transform: translateY(calc(var(--logoOffset) * -1));
+
+		img {
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+
+	#brand {
+		font-family: "Silverfake";
+	}
+
+	nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: stretch;
+
+		a {
+			display: block;
+			padding: 0 0.75rem;
+			line-height: var(--navbarHeight);
+		}
+	}
 </style>

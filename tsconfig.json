@@ -8,23 +8,8 @@
       "~/*": [
         "./*"
       ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@layouts/*": [
-        "./src/layouts/*"
-      ],
-      "@pages/*": [
-        "./src/pages/*"
-      ],
-      "@styles/*": [
-        "./src/styles/*"
-      ],
-      "@scripts/*": [
-        "./src/scripts/*"
-      ],
-      "@assets/*": [
-        "./src/assets/*"
+      "@/*": [
+        "./src/*"
       ],
     }
   }

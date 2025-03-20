@@ -1,0 +1,30 @@
+@use '@/styles/variables';
+@use '@/styles/fonts';
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: variables.$color-primary;
+  color: variables.$color-secondary;
+  font-family: 'Tw Cen MT', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: 'Silverfake';
+}
