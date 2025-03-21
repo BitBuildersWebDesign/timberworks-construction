@@ -13,14 +13,18 @@ const logoSize = navbarHeight + logoOffset * 2;
 			<Image src={logo} alt="Timberworks logo" width={200} height={200} />
 		</a>
 
-		<div id="brand">Timberworks Construction</div>
+		<!-- <div id="brand">Timberworks Construction</div> -->
 
-		<nav>
-			<a href="#">Home</a>
-			<a href="#">Products</a>
-			<a href="#">Services</a>
-			<a href="#">Get in Touch</a>
-		</nav>
+		<div id="nav-links" class="row">
+			<nav class="row">
+				<a href="/">Home</a>
+				<a href="/products">Products</a>
+				<a href="/services">Services</a>
+				<a href="/about">About Us</a>
+			</nav>
+
+			<a href="#" id="get-started">Get in Touch</a>
+		</div>
 	</div>
 </header>
 
@@ -47,6 +51,13 @@ const logoSize = navbarHeight + logoOffset * 2;
 		border-radius: 0.5rem;
 	}
 
+	.row {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
 	#logo {
 		width: var(--logoSize);
 		height: var(--logoSize);
@@ -65,16 +76,50 @@ const logoSize = navbarHeight + logoOffset * 2;
 		font-family: "Silverfake";
 	}
 
+	#nav-links {
+		gap: 1rem;
+	}
+
 	nav {
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
+		height: var(--navbarHeight);
 		align-items: stretch;
+		gap: 0.5rem;
 
 		a {
 			display: block;
 			padding: 0 0.75rem;
 			line-height: var(--navbarHeight);
+			color: variables.$color-primary;
+			text-decoration: none;
+			text-transform: uppercase;
+
+			&:hover {
+				background-color: variables.$color-primary;
+				color: variables.$color-secondary;
+			}
 		}
+	}
+
+	#get-started {
+		display: block;
+		padding: 0.75rem;
+		background-color: variables.$color-accent;
+		color: variables.$color-secondary;
+		border: 0.1rem solid variables.$color-accent;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		&:hover {
+			background-color: variables.$color-secondary;
+			color: variables.$color-accent;
+			border-color: variables.$color-accent;
+		}
+	}
+
+	a {
+		transition:
+			background-color 0.1s linear,
+			color 0.1s linear;
 	}
 </style>
