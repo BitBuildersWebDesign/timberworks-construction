@@ -1,10 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import logo from "@/assets/logo.png";
-
-const navbarHeight = 80;
-const logoOffset = 30;
-const logoSize = navbarHeight + logoOffset * 2;
 ---
 
 <header>
@@ -31,24 +27,26 @@ const logoSize = navbarHeight + logoOffset * 2;
 <style lang="scss">
 	@use "@/styles/variables";
 
-	:root {
-		--navbarHeight: 4rem;
-		--logoOffset: 1.5rem;
-		--logoSize: calc(var(--navbarHeight) + var(--logoOffset) * 2);
-	}
+	$navbar-height: 4rem;
+	$logo-offset: 1.5rem;
+	$logo-size: calc($navbar-height + $logo-offset * 2);
 
 	header {
-		padding: calc(var(--logoOffset) + 1rem) 2rem;
+		position: fixed;
+		width: 100%;
+		z-index: 100;
+		padding: calc($logo-offset + 1rem) 2rem;
 		color: variables.$color-primary;
 	}
 
 	.container {
 		display: flex;
 		justify-content: space-between;
-		height: var(--navbarHeight);
+		height: $navbar-height;
 		padding: 0 1rem;
 		background-color: variables.$color-secondary;
 		border-radius: 0.5rem;
+		box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.5);
 	}
 
 	.row {
@@ -59,11 +57,16 @@ const logoSize = navbarHeight + logoOffset * 2;
 	}
 
 	#logo {
-		width: var(--logoSize);
-		height: var(--logoSize);
+		width: $logo-size;
+		height: $logo-size;
 		background-color: variables.$color-secondary;
 		border-radius: 50%;
-		transform: translateY(calc(var(--logoOffset) * -1));
+		transform: translateY(calc($logo-offset * -1));
+		transition: box-shadow 0.1s linear;
+
+		&:hover {
+			box-shadow: 0 0 0.5rem variables.$color-accent;
+		}
 
 		img {
 			display: block;
@@ -81,14 +84,14 @@ const logoSize = navbarHeight + logoOffset * 2;
 	}
 
 	nav {
-		height: var(--navbarHeight);
+		height: $navbar-height;
 		align-items: stretch;
 		gap: 0.5rem;
 
 		a {
 			display: block;
 			padding: 0 0.75rem;
-			line-height: var(--navbarHeight);
+			line-height: $navbar-height;
 			color: variables.$color-primary;
 			text-decoration: none;
 			text-transform: uppercase;
@@ -111,13 +114,13 @@ const logoSize = navbarHeight + logoOffset * 2;
 		text-transform: uppercase;
 
 		&:hover {
-			background-color: variables.$color-secondary;
+			background-color: transparent;
 			color: variables.$color-accent;
-			border-color: variables.$color-accent;
 		}
 	}
 
 	a {
+		font-weight: 500;
 		transition:
 			background-color 0.1s linear,
 			color 0.1s linear;

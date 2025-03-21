@@ -1,5 +1,18 @@
 ---
-import MainLayout from '@/layouts/MainLayout.astro';
+import MainLayout from "@/layouts/MainLayout.astro";
+import Hero from "@/components/Hero.astro";
+import Section from "@/components/Section.astro";
 ---
 
-<MainLayout></MainLayout>
+<MainLayout>
+	<Hero />
+	<Section title="Structures">
+		<p>
+			We build outdoor structures for all your needs, from barns to sheds and
+			everything in between. We also offer services to spruce up your space.
+			Proudly crafted by hand in the USA.
+		</p>
+	</Section>
+
+	<Section title="Services" light />
+</MainLayout>

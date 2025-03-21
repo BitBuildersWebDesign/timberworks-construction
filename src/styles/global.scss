@@ -18,13 +18,34 @@ body {
   background-color: variables.$color-primary;
   color: variables.$color-secondary;
   font-family: 'Tw Cen MT', sans-serif;
+  font-weight: 300;
 }
 
 .container {
-  max-width: 1200px;
+  display: flex;
   margin: 0 auto;
+  padding: 2rem;
+
+  &.full-width {
+    max-width: 100%;
+  }
+
+  &.center-children {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.block {
+    display: block;
+  }
 }
 
-h1 {
-  font-family: 'Silverfake';
+// h1 {
+//   font-family: 'Silverfake';
+// }
+
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: max(1400px, 60%);
+  }
 }
