@@ -1,18 +1,107 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import Hero from "@/components/Hero.astro";
-import Section from "@/components/Section.astro";
+import SectionLayout from "@/layouts/SectionLayout.astro";
+import TwoColumns from "@/layouts/TwoColumns.astro";
+
+import { Image } from "astro:assets";
+import barn from "@/assets/front 2.jpeg";
 ---
 
 <MainLayout>
 	<Hero />
-	<Section title="Structures">
-		<p>
-			We build outdoor structures for all your needs, from barns to sheds and
-			everything in between. We also offer services to spruce up your space.
-			Proudly crafted by hand in the USA.
-		</p>
-	</Section>
+	<SectionLayout title="Structures">
+		<TwoColumns>
+			<div slot="left" class="text">
+				<h3>Barns</h3>
+				<p>
+					We specialize in agricultural structures that make sense and are
+					pleasant to work in.
+				</p>
+				<ul>
+					<li>
+						<h4>Timberframe</h4>
+						<p>We work with quality frame cutters</p>
+					</li>
+					<li>
+						<h4>Post and Beam</h4>
+						<p>Options for custom steel connectors</p>
+					</li>
+					<li>
+						<h4>Pole Structures</h4>
+						<p>Simple and cost effective</p>
+					</li>
+				</ul>
+			</div>
+			<div slot="right" class="images">
+				<Image src={barn} alt="Barn" width={800} />
+			</div>
+		</TwoColumns>
+	</SectionLayout>
 
-	<Section title="Services" light />
+	<SectionLayout title="Services" light>
+		<TwoColumns>
+			<div slot="left" class="text">
+				<h3>Barns</h3>
+				<p>
+					We specialize in agricultural structures that make sense and are
+					pleasant to work in.
+				</p>
+				<ul>
+					<li>
+						<h4>Timberframe</h4>
+						<p>We work with quality frame cutters</p>
+					</li>
+					<li>
+						<h4>Post and Beam</h4>
+						<p>Options for custom steel connectors</p>
+					</li>
+					<li>
+						<h4>Pole Structures</h4>
+						<p>Simple and cost effective</p>
+					</li>
+				</ul>
+			</div>
+			<div slot="right" class="images">
+				<Image src={barn} alt="Barn" width={800} />
+			</div>
+		</TwoColumns>
+	</SectionLayout>
 </MainLayout>
+
+<style lang="scss">
+	@use "@/styles/variables";
+
+	.text {
+		width: 40%;
+	}
+
+	h3 {
+		margin-bottom: 1rem;
+		font-size: 1.5rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.2rem;
+	}
+
+	ul {
+		margin: 0;
+		margin-top: 2rem;
+	}
+
+	li {
+		list-style: none;
+		margin-bottom: 1.5rem;
+	}
+
+	h4 {
+		margin-bottom: 0.5rem;
+		font-size: 1rem;
+		font-weight: 500;
+	}
+
+	img {
+		border: 0.25rem solid;
+		border-radius: 0.25rem;
+	}
+</style>

@@ -18,13 +18,13 @@ body {
   background-color: variables.$color-primary;
   color: variables.$color-secondary;
   font-family: 'Tw Cen MT', sans-serif;
-  font-weight: 300;
+  font-weight: 200;
 }
 
 .container {
   display: flex;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
 
   &.full-width {
     max-width: 100%;
@@ -43,6 +43,26 @@ body {
 // h1 {
 //   font-family: 'Silverfake';
 // }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  margin: 0;
+}
+
+p {
+  line-height: 1.25;
+}
+
+ul {
+  padding-left: 3rem;
+}
 
 @media screen and (min-width: 1400px) {
   .container {
