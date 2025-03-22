@@ -1,20 +1,21 @@
 ---
 import { Image } from "astro:assets";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-trees-only.png";
 ---
 
 <header>
 	<div class="container">
-		<a href="/" id="logo">
-			<Image src={logo} alt="Timberworks logo" width={200} height={200} />
+		<a href="/" id="brand">
+			<div id="logo">
+				<Image src={logo} alt="Timberworks logo" width={200} height={200} />
+			</div>
+			<div id="name">Timberworks<br />Construction</div>
 		</a>
-
-		<!-- <div id="brand">Timberworks Construction</div> -->
 
 		<div id="nav-links" class="row">
 			<nav class="row">
 				<a href="/">Home</a>
-				<a href="/about">About Us</a>
+				<a href="/about">Our Story</a>
 				<a href="/services">Services</a>
 				<a href="/portfolio">Portfolio</a>
 			</nav>
@@ -28,7 +29,7 @@ import logo from "@/assets/logo.png";
 	@use "@/styles/variables";
 
 	$navbar-height: 4rem;
-	$logo-offset: 1.5rem;
+	$logo-offset: 0rem;
 	$logo-size: calc($navbar-height + $logo-offset * 2);
 
 	header {
@@ -56,17 +57,35 @@ import logo from "@/assets/logo.png";
 		align-items: center;
 	}
 
+	#brand {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		text-decoration: none;
+
+		&:hover {
+			#logo {
+				// box-shadow: 0 0 0.5rem variables.$color-accent;
+			}
+
+			#name {
+				color: variables.$color-accent;
+			}
+		}
+	}
+
 	#logo {
 		width: $logo-size;
 		height: $logo-size;
-		background-color: variables.$color-secondary;
-		border-radius: 50%;
-		transform: translateY(calc($logo-offset * -1));
+		padding: 0.25rem;
+		// background-color: variables.$color-secondary;
+		// border-radius: 50%;
+		// transform: translateY(calc($logo-offset * -1));
 		transition: box-shadow 0.1s linear;
 
-		&:hover {
-			box-shadow: 0 0 0.5rem variables.$color-accent;
-		}
+		// &:hover {
+		// 	box-shadow: 0 0 0.5rem variables.$color-accent;
+		// }
 
 		img {
 			display: block;
@@ -75,8 +94,13 @@ import logo from "@/assets/logo.png";
 		}
 	}
 
-	#brand {
+	#name {
+		margin-left: 0.75rem;
+		color: variables.$color-primary;
 		font-family: "Silverfake";
+		text-align: center;
+		font-size: 1.2rem;
+		transition: color 0.1s linear;
 	}
 
 	#nav-links {
