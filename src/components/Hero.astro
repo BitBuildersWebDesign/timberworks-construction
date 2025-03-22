@@ -1,14 +1,15 @@
 ---
-import { Image } from "astro:assets";
-import barn from "@/assets/front.jpeg";
+import { getImage } from "astro:assets";
+import barn from "@/assets/Barn 12 Angle View2.jpeg";
+const optimizedBarnImage = await getImage({ src: barn });
 ---
 
-<div id="outer" class="container full-width">
-	<div class="img-container">
-		<Image src={barn} alt="Barn" width={500} height={500} />
-	</div>
-
-	<div class="container center-children">
+<div
+	id="hero"
+	class="container full-width"
+	style=`background-image: url(${optimizedBarnImage.src}); background-size: cover; background-position: center;`
+>
+	<div id="tagline" class="container center-children">
 		<div>
 			<p>We build</p>
 			<h1>outdoor<br />structures</h1>
@@ -17,8 +18,7 @@ import barn from "@/assets/front.jpeg";
 				also offer services to spruce up your space. Proudly crafted by hand in
 				the USA.
 			</p>
-
-			<a href="#">Get in touch</a>
+			<a href="/contact">Get in touch</a>
 		</div>
 	</div>
 </div>
@@ -26,35 +26,36 @@ import barn from "@/assets/front.jpeg";
 <style lang="scss">
 	@use "@/styles/variables";
 
-	#outer {
-		flex-direction: column;
-		min-height: min(75vh, 500px);
+	$hero-height: 80vh;
+	$circle-radius: 120vh;
+
+	#hero {
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: stretch;
+		height: $hero-height;
 		padding: 0;
 		font-size: 16px;
-	}
-
-	.img-container {
-		width: 100%;
-		max-height: 600px;
 		overflow: hidden;
 	}
 
-	img {
-		display: block;
-		min-width: 100%;
-		min-height: 100%;
-		object-fit: cover;
-	}
-
-	div.container.center-children {
-		flex-grow: 1;
-		padding: 0 2rem 3rem 2rem;
+	#tagline {
+		margin: 0;
+		height: $circle-radius;
+		padding: 0;
+		padding-left: 5rem;
+		padding-right: 4rem;
+		// padding-top: 6rem;
 		background: linear-gradient(
 			135deg,
-			variables.$color-accent,
-			variables.$color-primary 65%
+			variables.$color-primary,
+			variables.$color-accent 200%
 		);
+		border-top-left-radius: calc($circle-radius / 2);
+		border-bottom-left-radius: calc($circle-radius / 2);
 		font-weight: 300;
+		box-shadow: -0.5rem 0.5rem 2rem variables.$color-primary;
+		transform: translateY(calc(3rem - (($circle-radius - $hero-height) / 2)));
 	}
 
 	h1 {
@@ -76,12 +77,12 @@ import barn from "@/assets/front.jpeg";
 
 	a {
 		display: inline-block;
-		margin: 2rem 0;
+		margin-top: 2rem;
 		padding: 0.75rem 1.5rem;
 		border: 0.1rem solid variables.$color-accent;
 		border-radius: 0.5rem;
 		font-size: 1.25rem;
-		font-weight: 500;
+		font-weight: 400;
 		text-decoration: none;
 		color: variables.$color-secondary;
 		background: variables.$color-accent;
@@ -92,51 +93,8 @@ import barn from "@/assets/front.jpeg";
 
 		&:hover {
 			background: transparent;
-			color: variables.$color-accent;
+			color: #8de199;
+			border-color: #8de199;
 		}
-	}
-
-	@media screen and (min-width: 400px) {
-	}
-
-	@media screen and (min-width: 576px) {
-	}
-
-	@media screen and (min-width: 768px) {
-		div.container.center-children {
-			padding: 3rem;
-		}
-	}
-
-	@media screen and (min-width: 992px) {
-		#outer {
-			flex-direction: row;
-		}
-
-		div.container.center-children {
-			padding: 5rem;
-			padding-top: 12rem;
-		}
-
-		.img-container {
-			max-width: 37%;
-			max-height: 100%;
-		}
-
-		img {
-			min-width: 100%;
-		}
-	}
-
-	@media screen and (min-width: 1200px) {
-	}
-
-	@media screen and (min-width: 1400px) {
-	}
-
-	@media screen and (min-width: 2000px) {
-	}
-
-	@media screen and (min-width: 3000px) {
 	}
 </style>
