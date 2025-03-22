@@ -1,0 +1,31 @@
+---
+interface Props {
+	columns: number;
+}
+
+const { columns } = Astro.props;
+const columnWidth = 1 / columns;
+---
+
+<div class="container full-width flex-grid">
+	<slot />
+</div>
+
+<style lang="scss" define:vars={{ columnWidth }}>
+	.flex-grid {
+		--gap: 2rem;
+
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: var(--gap);
+		justify-content: space-between;
+		align-items: stretch;
+
+		> :global(*) {
+			// flex-basis: calc(100% * var(--columnWidth) - var(--gap));
+			// max-width: calc(100% * var(--columnWidth) - var(--gap));
+			flex: 1 1 calc(100% * var(--columnWidth) - var(--gap));
+		}
+	}
+</style>

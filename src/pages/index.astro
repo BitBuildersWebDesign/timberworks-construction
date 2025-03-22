@@ -2,7 +2,9 @@
 import MainLayout from "@/layouts/MainLayout.astro";
 import Hero from "@/components/Hero.astro";
 import SectionLayout from "@/layouts/SectionLayout.astro";
-import TwoColumns from "@/layouts/TwoColumns.astro";
+import TwoColumnsLayout from "@/layouts/TwoColumnsLayout.astro";
+import FlexGridLayout from "@/layouts/FlexGridLayout.astro";
+import Card from "@/components/Card.astro";
 
 import { Image } from "astro:assets";
 import barn from "@/assets/front 2.jpeg";
@@ -10,9 +12,18 @@ import barn from "@/assets/front 2.jpeg";
 
 <MainLayout>
 	<Hero />
-	<SectionLayout title="Our Services" />
+
+	<SectionLayout title="Our Services">
+		<FlexGridLayout columns={4}>
+			<Card>Structures</Card>
+			<Card>Accessories</Card>
+			<Card>Wood Cutting</Card>
+			<Card>Restoration & Removal</Card>
+		</FlexGridLayout>
+	</SectionLayout>
+
 	<SectionLayout title="Structures">
-		<TwoColumns>
+		<TwoColumnsLayout>
 			<div slot="left" class="text">
 				<h3>Barns</h3>
 				<p>
@@ -37,11 +48,11 @@ import barn from "@/assets/front 2.jpeg";
 			<div slot="right" class="images">
 				<Image src={barn} alt="Barn" width={800} />
 			</div>
-		</TwoColumns>
+		</TwoColumnsLayout>
 	</SectionLayout>
 
 	<SectionLayout title="Services" light>
-		<TwoColumns>
+		<TwoColumnsLayout>
 			<div slot="left" class="text">
 				<h3>Barns</h3>
 				<p>
@@ -66,7 +77,7 @@ import barn from "@/assets/front 2.jpeg";
 			<div slot="right" class="images">
 				<Image src={barn} alt="Barn" width={800} />
 			</div>
-		</TwoColumns>
+		</TwoColumnsLayout>
 	</SectionLayout>
 </MainLayout>
 
